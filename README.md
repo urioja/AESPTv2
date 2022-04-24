@@ -9,6 +9,7 @@ The dataset can be downloaded from the following [links]() (in construction).
 Motivated by the lack of an open dataset for Side-channel analysis which includes traces from different copies of the same device and different AES implementations, we have generated the AES_PTv2 dataset (PT stands for portable). It includes EM traces from four copies of the same development board mounting an STM32F411VE high-performance Arm Cortex-M4 32-bit RISC microcontroller working at 100 MHz. 
 The four copies are called D1, D2, D3, and D4 from now on. The dataset also includes clean power measurements from the Piñata board, a different embedded systems based on a microcontroller from the same family. 
 
+![picture](img/ExpSetup.jpg)
 
 ## AES implementations
 
@@ -38,7 +39,6 @@ Below we show the pseudocode of MS1 and MS2 schemes.
 The devices are encrypting 16-byte random plaintexts using the three software AES implementations described above. During that operation, we measure the power consumption of the device with a Langer EM probe attached to a 20 GS/s digital oscilloscope (LeCroy Waverunner 9104) triggered by the microcontroller, which rises a GPIO signal when the internal computation starts. The high sensibility probe is placed over a decoupling capacitor connected to the power line of the device. The traces are taken at 1 GHz with 8-bit resolution, corresponding to the first Sbox operation. Traces are preprocessed by applying zero mean, standardization, waveform realignment, and a lightweight software low-pass filter. Nevertheless, traces are deliberately quite noisy (due to the nature of EM measurements, variations during the acquisition of the traces, constructive differences between the devices, etc.) to serve as realistic experimental use cases. 
 
 ![picture](img/ExpSetupScheme.JPG)
-![picture](img/ExpSetup.jpg)
 
 ## Dataset organization
 The dataset is stored using the HDF5 format. It is divided in 5 separate files, one pear each device: Pinata.h, D1.h, D2.h, D3.h and D4.h. Each HDF5 file is organized as is illustrated in the figure below. In the figure, DUT.h represent the device (namely Pinata, D1, D2, D3 or D4). Thus, fore each device, the file has 3 subgroups as it includes traces of the device performing operations with the three aforementioned AES implementations. Each group is divided in two soubgroups: Profiling (random keys) and Attack (fixed keys). In turn, each subgroup is divided in more subgroups containing the traces, labels and metadata of the traces.
