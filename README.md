@@ -24,6 +24,7 @@ Note that a second-order DPA attack, which combines the leakage of two bytes of 
 Below we show the pseudocode of MS1 and MS2 schemes.
 
 ![picture](img/MS1.JPG)
+
 ![picture](img/MS2.JPG)
 
 ## Targeted Boards
