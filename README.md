@@ -13,9 +13,12 @@ The four copies are called D1, D2, D3, and D4 from now on. The dataset also incl
 ## AES implementations
 
 Three different AES software implementations have been considered. There is a brief explanation of each one of them is given in the sequel.
-    - **Unprotected AES** typical AES-128 (in ECB mode) software implementation [[2]](#2).
-    - **Masking Scheme 1 (Weak) - MS1:** A modification of the previous one which matches the same masking method as described in [[1]](#1) (Masked Lookup Table). In this implementation, the output mask of the SBox operation is removed after each 1-Byte lookup and hence we see a clear correlation of the mask in the SBox time window. This makes the scheme similar to the one used in ASCAD, as can be observed in its pseoudocode [[3]](#3). As we show in our experiments in [[5]](#5) and [[6]](#6), the close manipulation of the shares (i.e., mask and masked intermediate value) make this implementation vulnerable against PAs.
-    - **Masking Scheme 2 (Robust) - MS2:** A modification of the previous one, but this time the output mask is removed after the ShiftRows operation. This means that the output mask does not leak during the SBox computation, unlike in the previous scheme. Thus, there is no close manipulation of the shares, making the implementation secure against PAs.
+
+- **Unprotected AES** typical AES-128 (in ECB mode) software implementation [[2]](#2).
+
+- **Masking Scheme 1 (Weak) - MS1:** A modification of the previous one which matches the same masking method as described in [[1]](#1) (Masked Lookup Table). In this implementation, the output mask of the SBox operation is removed after each 1-Byte lookup and hence we see a clear correlation of the mask in the SBox time window. This makes the scheme similar to the one used in ASCAD, as can be observed in its pseoudocode [[3]](#3). As we show in our experiments in [[5]](#5) and [[6]](#6), the close manipulation of the shares (i.e., mask and masked intermediate value) make this implementation vulnerable against PAs.
+
+- **Masking Scheme 2 (Robust) - MS2:** A modification of the previous one, but this time the output mask is removed after the ShiftRows operation. This means that the output mask does not leak during the SBox computation, unlike in the previous scheme. Thus, there is no close manipulation of the shares, making the implementation secure against PAs.
 
 Note that a second-order DPA attack, which combines the leakage of two bytes of the key at a time to remove the mask, is feasible in both MS1 and MS2. 
 Below we show the pseudocode of MS1 and MS2 schemes.
