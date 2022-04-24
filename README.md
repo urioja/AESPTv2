@@ -23,8 +23,8 @@ Three different AES software implementations have been considered. There is a br
 Note that a second-order DPA attack, which combines the leakage of two bytes of the key at a time to remove the mask, is feasible in both MS1 and MS2. 
 Below we show the pseudocode of MS1 and MS2 schemes.
 
-![picture](img/MS1.PNG)
-![picture](img/MS2.PNG)
+![picture](img/MS1.jpg)
+![picture](img/MS2.jpg)
 
 ## Targeted Boards
 
@@ -36,13 +36,13 @@ Below we show the pseudocode of MS1 and MS2 schemes.
 
 The devices are encrypting 16-byte random plaintexts using the three software AES implementations described above. During that operation, we measure the power consumption of the device with a Langer EM probe attached to a 20 GS/s digital oscilloscope (LeCroy Waverunner 9104) triggered by the microcontroller, which rises a GPIO signal when the internal computation starts. The high sensibility probe is placed over a decoupling capacitor connected to the power line of the device. The traces are taken at 1 GHz with 8-bit resolution, corresponding to the first Sbox operation. Traces are preprocessed by applying zero mean, standardization, waveform realignment, and a lightweight software low-pass filter. Nevertheless, traces are deliberately quite noisy (due to the nature of EM measurements, variations during the acquisition of the traces, constructive differences between the devices, etc.) to serve as realistic experimental use cases. 
 
-![picture](img/ExpSetupScheme.PNG)
-![picture](img/ExpSetup.PNG)
+![picture](img/ExpSetupScheme.jpg)
+![picture](img/ExpSetup.jpg)
 
 ## Dataset organization
 The dataset is stored using the HDF5 format. It is divided in 5 separate files, one pear each device: Pinata.h, D1.h, D2.h, D3.h and D4.h. Each HDF5 file is organized as is illustrated in the figure below. In the figure, DUT.h represent the device (namely Pinata, D1, D2, D3 or D4). Thus, fore each device, the file has 3 subgroups as it includes traces of the device performing operations with the three aforementioned AES implementations. Each group is divided in two soubgroups: Profiling (random keys) and Attack (fixed keys). In turn, each subgroup is divided in more subgroups containing the traces, labels and metadata of the traces.
 
-![picture](img/Organization.PNG)
+![picture](img/Organization.jpg)
 
 Regarding the number of traces, the dataset includes 600,000 traces per device:
 	- 150,000 unprotected AES power traces (100,000 traces of the device using random keys and 50,000 traces of the device using a fixed key).
