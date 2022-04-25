@@ -1,14 +1,6 @@
 # *AES_PTv2* Dataset
 This dataset contains power/EM traces from several devices executing three AES implementations: An unprotected AES implementation and two masked protected AES implementations (See AES implementation below). The goal is to provide realistic power/EM traces obtained from actual devices on the field, considering different AES implementations. In addition, we consider the portability issue by providing traces from different copies of the same hardware device. The devices under test are four identical copies of the same embedded device (STM32F4) and one different embedded device (Riscue Piñata). This results in 15 different setups.
 
-## Download
-The dataset can be downloaded from the following links:
-- [Piñata](https://drive.google.com/file/d/1n8KQuq-giq2ZJvCLzBL_L-2zlq-nDk-q/view?usp=sharing) 
-- [STM32F4-D1](https://drive.google.com/file/d/1xDY3-xJ2GodaY2-qgsKm1_LrH7GxkIcr/view?usp=sharing)
-- [STM32F4-D2](https://drive.google.com/file/d/1FLNX9h957BgaR0Op1-ZR8X7xweTxqACm/view?usp=sharing)
-- [STM32F4-D3]()
-- [STM32F4-D4]()
-
 ## Introduction
 
 Motivated by the lack of an open dataset for Side-channel analysis which includes traces from different copies of the same device and different AES implementations, we have generated the AES_PTv2 dataset (PT stands for portable). It includes EM traces from four copies of the same development board mounting an STM32F411VE high-performance Arm Cortex-M4 32-bit RISC microcontroller working at 100 MHz. 
@@ -35,9 +27,9 @@ Below we show the pseudocode of MS1 and MS2 schemes.
 
 ## Targeted Boards
 
-**Piñata Board:** Piñata is a development board created by Riscure based on an ARM Cortex-M4F core working at a 168 MHz clock speed [[7]](#7). It has been physically modified and programmed to be a training target for SCA and Fault Injection. Essentially, the power line of the board has been kept readily accessible, and the decoupling capacitors on it have been removed, allowing very clean power consumption measurements. We measure the board's power consumption during the AES encryption with a Tektronix CT1 current probe attached to a 20 GS/s digital oscilloscope (LeCroy Waverunner 9104) triggered by the microcontroller, which raises a GPIO signal when the internal computation starts. Each power trace consists of 1,260 samples (1\,500 and 1\,800 for the masked implementations 1 and 2 respectively) taken at 1 GHz with 8-bit resolution, corresponding to the first SBox operation.
+- **Piñata Board:** Piñata is a development board created by Riscure based on an ARM Cortex-M4F core working at a 168 MHz clock speed [[7]](#7). It has been physically modified and programmed to be a training target for SCA and Fault Injection. Essentially, the power line of the board has been kept readily accessible, and the decoupling capacitors on it have been removed, allowing very clean power consumption measurements. We measure the board's power consumption during the AES encryption with a Tektronix CT1 current probe attached to a 20 GS/s digital oscilloscope (LeCroy Waverunner 9104) triggered by the microcontroller, which raises a GPIO signal when the internal computation starts. Each power trace consists of 1,260 samples (1\,500 and 1\,800 for the masked implementations 1 and 2 respectively) taken at 1 GHz with 8-bit resolution, corresponding to the first SBox operation.
 
-**STM32F411E-DISCO Board:** The STM32F411E-DISCO is a development board with an STM32F411VE [[8]](#8) high-performance Arm Cortex-M4 32-bit RISC microcontroller working at 100 MHz. This board (STM32F411E-DISCO) is similar to Piñata (microcontrollers are from the same family), and uses exactly the same code. We measure the power consumption of the board during the AES encryptions with a Langer EM probe over a decoupling capacitor (C38) attached to the oscilloscope (LeCroy Waverunner 9104), wich again is GPIO-triggered by the microcontroller. This allows for a less invasive acquisition, but the traces are very noisy, which significantly complicates the attack. Each power trace consists of 1,225 samples (1,500 and 1,800 for the masked implementations 1 and 2 respectively).
+- **STM32F411E-DISCO Board:** The STM32F411E-DISCO is a development board with an STM32F411VE [[8]](#8) high-performance Arm Cortex-M4 32-bit RISC microcontroller working at 100 MHz. This board (STM32F411E-DISCO) is similar to Piñata (microcontrollers are from the same family), and uses exactly the same code. We measure the power consumption of the board during the AES encryptions with a Langer EM probe over a decoupling capacitor (C38) attached to the oscilloscope (LeCroy Waverunner 9104), wich again is GPIO-triggered by the microcontroller. This allows for a less invasive acquisition, but the traces are very noisy, which significantly complicates the attack. Each power trace consists of 1,225 samples (1,500 and 1,800 for the masked implementations 1 and 2 respectively).
 
 ## Acquisition specifications
 
@@ -54,6 +46,14 @@ Regarding the number of traces, the dataset includes 600,000 traces per device:
 	- 150,000 unprotected AES power traces (100,000 traces of the device using random keys and 50,000 traces of the device using a fixed key).
 	- 200,000 MS1 power traces (150,000 traces of the device using random keys and 50,000 traces of the device using a fixed key).
 	- 300,000 MS2 power traces (200,000 traces of the device using random keys and 100,000 traces of the device using a fixed key).
+	
+## Download
+The dataset can be downloaded from the following links:
+- [Piñata](https://drive.google.com/file/d/1n8KQuq-giq2ZJvCLzBL_L-2zlq-nDk-q/view?usp=sharing) 
+- [STM32F4-D1](https://drive.google.com/file/d/1xDY3-xJ2GodaY2-qgsKm1_LrH7GxkIcr/view?usp=sharing)
+- [STM32F4-D2](https://drive.google.com/file/d/1FLNX9h957BgaR0Op1-ZR8X7xweTxqACm/view?usp=sharing)
+- [STM32F4-D3]()
+- [STM32F4-D4]()
 	
 ## Previous datasets
 
