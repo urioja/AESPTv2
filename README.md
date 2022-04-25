@@ -8,6 +8,8 @@ The four copies are called D1, D2, D3, and D4 from now on. The dataset also incl
 
 ![picture](img/ExpSetup.jpg)
 
+<img src="img/ExpSetup.jpg" alt="drawing" width="200"/>
+
 ## AES implementations
 
 Three different AES software implementations have been considered. There is a brief explanation of each one of them is given in the sequel.
