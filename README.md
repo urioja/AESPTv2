@@ -21,7 +21,8 @@ Three different AES software implementations have been considered. There is a br
 Note that a second-order DPA attack, which combines the leakage of two bytes of the key at a time to remove the mask, is feasible in both MS1 and MS2. 
 Below we show the pseudocode of MS1 and MS2 schemes.
 
-<img src="img/MS1.JPG" alt="drawing" width="400"/><img src="img/MS2.JPG" alt="drawing" width="400"/>
+![drawing](img/MS1.JPG)
+![drawing](img/MS2.JPG)
 
 ## Targeted Boards
 
